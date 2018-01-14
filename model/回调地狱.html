@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+
+
+/*setTimeout(function (name) {
+  var catList = name + ',';
+
+  setTimeout(function (name) {
+    catList += name + ',';
+
+    setTimeout(function (name) {
+      catList += name + ',';
+
+      setTimeout(function (name) {
+        catList += name + ',';
+
+        setTimeout(function (name) {
+          catList += name;
+
+          console.log(catList);//Panther,Janguar,Lynx,Snow Leopard,Lion
+
+        }, 1, 'Lion');
+
+      }, 1, 'Snow Leopard');
+
+    }, 1, 'Lynx');
+
+  }, 1, 'Jaguar');}, 1, 'Panther');*/
+
+
+
+    /*  var catList = '';
+
+    setTimeout(getPanther, 1, 'Panther');
+
+    function getPanther(name) {
+        catList += name + ',';
+        setTimeout(getJanguar, 1, 'Janguar');
+    }
+
+    function getJanguar(name) {
+        catList += name + ',';
+        setTimeout(getLynx, 1, 'Lynx');
+    }
+
+    function getLynx(name) {
+        catList += name + ',';
+        setTimeout(getSnowLeopard, 1, 'Snow Leopard');
+    }
+
+    function getSnowLeopard(name) {
+        catList += name + ',';
+        setTimeout(getLion, 1, 'Lion');
+    }
+
+    function getLion(name) {
+        catList += name;
+        setTimeout(print, 1);
+    }
+
+    function print() {
+        console.log(catList);//Panther,Janguar,Lynx,Snow Leopard,Lion
+    }*/
+
+
+    
+    function buildCatList(list, returnVal, fn) {
+        setTimeout(function (name) {
+            var catList = list === '' ? name : list + ',' + name;
+            fn(catList);
+        }, 1, returnVal);
+    }
+
+
+    buildCatList('', 'Panther', getJanguar);
+
+    function getJanguar(list) {
+        buildCatList(list, 'Janguar', getLynx);
+    }
+
+    function getLynx(list) {
+        buildCatList(list, 'Lynx', getSnowLeopard);
+    }
+
+    function getSnowLeopard(list) {
+        buildCatList(list, 'Snow Leopard', getLion);
+    }
+
+    function getLion(list) {
+        buildCatList(list, 'Lion',print);
+    }
+
+    function print(list) {
+        console.log(list);
+    }    
+
+
+
+
+        </script>
+</body>
+</html>
